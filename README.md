@@ -2,6 +2,7 @@
 Redis cache event client manager
 
 ```cs
+using RedisCacheEventClient;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace ConsoleExample {
         /// </summary>
         private static void Main() {
             //Redis cache controller
-            var redisCache = new RedisCacheEventClient.RedisEventManager<string>("127.0.0.1:6379", "chTest");
+            var redisCache = new RedisEventManager<string>("127.0.0.1:6379", "chTest");
 
             //Received message event
             redisCache.ReceiveMessage += RedisCache_ReceiveMessage;
