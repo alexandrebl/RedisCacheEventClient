@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0"?>
-<package >
+<package>
   <metadata>
     <id>RedisCacheEventClient</id>
-    <version>1.0.1</version>
+    <version>1.0.3</version>
     <title>RedisCacheEventClient</title>
     <authors>Alexandre Brandao Lustosa</authors>
     <owners>Alexandre Brandao Lustosa</owners>
@@ -14,6 +14,13 @@
     <releaseNotes>Redis Cache Event Client Library</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>Redis Cache Event Client Key Value Observer EventHub</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="9.0" />
+      <dependency id="StackExchange.Redis" version="1.2.1" />
+      <dependency id="StackExchange.Redis.Extender" version="1.0.5" />
+      <dependency id="StackExchange.Redis.Extensions.Core" version="2.1.0" />
+      <dependency id="StackExchange.Redis.Extensions.Newtonsoft" version="2.1.0" />
+    </dependencies>
   </metadata>
   <files>
     <file src="..\bin\Release\RedisCacheEventClient.*" target="lib\net45" />
