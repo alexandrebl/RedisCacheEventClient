@@ -50,4 +50,3 @@ Redis cache event client manager
             Console.WriteLine($"Received: {obj}");
         }
     }
-```cs
