@@ -8,7 +8,7 @@ namespace RedisCacheEventClient.Library {
     /// <summary>
     /// Gerenciador de conexão de cache
     /// </summary>
-    public static class ObserverConnectionManager {
+    internal static class ObserverConnectionManager {
 
         /// <summary>
         /// String de conexão

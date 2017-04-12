@@ -58,7 +58,7 @@
   <ItemGroup>
     <Compile Include="Library\ObserverConnectionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\CacheConnectionManager.cs" />
+    <Compile Include="Library\CacheConnectionManager.cs" />
     <Compile Include="Utilities\Interfaces\IObserverManagerUtility.cs" />
     <Compile Include="Utilities\Interfaces\IObserverManagerUtilityClient.cs" />
     <Compile Include="Utilities\ObserverDataUtility.cs" />

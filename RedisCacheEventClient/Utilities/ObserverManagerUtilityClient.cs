@@ -8,7 +8,7 @@ namespace RedisCacheEventClient.Utilities {
     /// Observer utility
     /// </summary>
     /// <typeparam name="T">tipo</typeparam>
-    public class ObserverManagerUtilityClient<T> : IObserverManagerUtilityClient<T> {
+    internal class ObserverManagerUtilityClient<T> : IObserverManagerUtilityClient<T> {
 
         /// <summary>
         /// Servidor redis

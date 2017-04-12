@@ -11,7 +11,7 @@ namespace RedisCacheEventClient.Utilities {
     /// Utilitário de controle de eventos
     /// </summary>
     /// <typeparam name="T">tipo</typeparam>
-    public class ObserverManagerUtility<T> : IObserverManagerUtility<T> {
+    internal class ObserverManagerUtility<T> : IObserverManagerUtility<T> {
 
         /// <summary>
         /// Conexão

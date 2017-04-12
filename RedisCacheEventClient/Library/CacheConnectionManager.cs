@@ -6,7 +6,7 @@ namespace RedisCacheEventClient.Utilities {
     /// <summary>
     /// Gerenciador de conexão de cache
     /// </summary>
-    public static class CacheConnectionManager {
+    internal static class CacheConnectionManager {
 
         /// <summary>
         /// String de conexão

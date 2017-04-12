@@ -8,7 +8,7 @@ namespace RedisCacheEventClient.Utilities {
     /// <summary>
     /// Utilitário de dados do observer
     /// </summary>
-    public static class ObserverDataUtility<T> {
+    internal static class ObserverDataUtility<T> {
 
         /// <summary>
         /// Converte objeto
