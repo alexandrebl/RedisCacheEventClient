@@ -30,6 +30,18 @@ namespace RedisCacheEventClient {
             _observerManagerUtility = new ObserverManagerUtility<T>(host);
             //Set channel
             _channel = channel;
+            //Define evento
+            _observerManagerUtility.OnReceiveMessage += OnReceiveMessage;
+        }
+
+        /// <summary>
+        /// Message received
+        /// </summary>
+        /// <param name="obj">object</param>
+        /// <param name="channel">channel message</param>
+        private void OnReceiveMessage(T obj, string channel) {
+            //Event invoker
+            ReceiveMessage?.Invoke(obj);
         }
 
         /// <summary>
@@ -52,15 +64,6 @@ namespace RedisCacheEventClient {
         public void Publish(T obj) {
             //Publish data
             _observerManagerUtility.Publish(_channel, obj);
-        }
-
-        /// <summary>
-        /// Reception event data
-        /// </summary>
-        /// <param name="obj">object data</param>
-        private void OnReceiveMessage(T obj) {
-            //Event invoker
-            ReceiveMessage?.Invoke(obj);
         }
     }
 }
