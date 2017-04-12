@@ -1,7 +1,8 @@
 # RedisCacheEventClient
 Redis cache event client manager
 
-/// <summary>
+```cs
+    /// <summary>
     /// Main class
     /// </summary>
     internal class Program {
@@ -49,3 +50,4 @@ Redis cache event client manager
             Console.WriteLine($"Received: {obj}");
         }
     }
+```cs
