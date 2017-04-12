@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>RedisCacheEventClient</id>
+    <version>1.0.1</version>
+    <title>RedisCacheEventClient</title>
+    <authors>Alexandre Brandao Lustosa</authors>
+    <owners>Alexandre Brandao Lustosa</owners>
+    <licenseUrl>https://github.com/alexandrebl/RedisCacheEventClient</licenseUrl>
+    <projectUrl>https://github.com/alexandrebl/RedisCacheEventClient</projectUrl>
+    <iconUrl>https://github.com/alexandrebl/RedisCacheEventClient</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Redis Cache Event Client</description>
+    <releaseNotes>Redis Cache Event Client Library</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Redis Cache Event Client Key Value Observer EventHub</tags>
+  </metadata>
+  <files>
+    <file src="..\bin\Release\RedisCacheEventClient.*" target="lib\net45" />
+  </files>
+</package>
