@@ -6,64 +6,64 @@ using System;
 namespace RedisCacheEventClient.Utilities {
 
     /// <summary>
-    /// Utilitário de dados do observer
+    /// Ubserver data processor
     /// </summary>
     internal static class ObserverDataUtility<T> {
 
         /// <summary>
-        /// Converte objeto
+        /// Convert object
         /// </summary>
-        /// <param name="obj">objeto</param>
-        /// <returns>valor</returns>
+        /// <param name="obj">object</param>
+        /// <returns>value</returns>
         public static RedisValue ObjToRedisValue(T obj) {
-            //Valor
+            //Get value
             var redisValue = (obj is string) ? obj.ToString() : JsonConvert.SerializeObject(obj);
 
-            //Retonro
+            //Return
             return redisValue;
         }
 
         /// <summary>
-        /// Converte para objeto
+        /// Convert object
         /// </summary>
-        /// <param name="redisValue">valor</param>
-        /// <returns>objeto</returns>
+        /// <param name="redisValue">value</param>
+        /// <returns>object</returns>
         public static T RedisValueToObj(RedisValue redisValue) {
-            //Variável temporária
+            //Temporary variable
             var obj = default(T);
 
-            //Verifica se há valor
+            //Verify if exists value
             if (!redisValue.HasValue) return obj;
 
-            //Verifica se é um json válido
+            //Verify if is valid
             if (IsValidJson(redisValue))
                 try {
-                    //Deserializa
+                    //Deserialize
                     obj = JsonConvert.DeserializeObject<T>(redisValue);
                 } catch (Exception) {
-                    //Converte para objeto
+                    //Convert object
                     obj = (T)(object)(string)redisValue;
                 } else
-                //Converte para objeto
+                //Convert object
                 obj = (T)(object)(string)redisValue;
 
-            //Retorno
+            //Return
             return obj;
         }
 
         /// <summary>
-        /// Verifica se é um json válido
+        /// Verify if is a valid json
         /// </summary>
-        /// <param name="json">dados no formato json</param>
-        /// <returns>indica sucesso</returns>
+        /// <param name="json">json data</param>
+        /// <returns>success flag</returns>
         public static bool IsValidJson(string json) {
             try {
-                //Efetua o parse
+                //Parse data
                 JObject.Parse(json);
-                //Retorno
+                //Return
                 return true;
             } catch (Exception) {
-                //Retorno de insucesso
+                //Return
                 return false;
             }
         }

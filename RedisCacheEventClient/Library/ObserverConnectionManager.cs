@@ -6,148 +6,148 @@ using System.Threading.Tasks;
 namespace RedisCacheEventClient.Library {
 
     /// <summary>
-    /// Gerenciador de conexão de cache
+    /// Cache connection manager
     /// </summary>
     internal static class ObserverConnectionManager {
 
         /// <summary>
-        /// String de conexão
+        /// connection String
         /// </summary>
         private static string _connectionString;
 
         /// <summary>
-        /// Componente de conexão
+        /// Connection multiplexer
         /// </summary>
 
         private static ConnectionMultiplexer _connection;
 
         /// <summary>
-        /// Objeto de sincronismo
+        /// Sync object
         /// </summary>
         private static readonly object SyncObj = new object();
 
         /// <summary>
-        /// Evento
+        /// Fail event
         /// </summary>
         public static event Action<ConnectionFailedEventArgs> OnFailed;
 
         /// <summary>
-        /// Evento
+        /// Restore Event
         /// </summary>
         public static event Action<ConnectionFailedEventArgs> OnRestored;
 
         /// <summary>
-        /// Evento
+        /// Event error
         /// </summary>
         public static event Action<Exception> OnError;
 
         /// <summary>
-        /// Evento
+        /// Event Info
         /// </summary>
         public static event Action<string> OnInfo;
 
         /// <summary>
-        /// Abre uma conexão
+        /// Open connection
         /// </summary>
-        /// <param name="isPersistence">indica se a conexão é persistente</param>
-        /// <returns>Retorna uma conexão</returns>
+        /// <param name="isPersistence">flag that define it is persistence connection</param>
+        /// <returns>connection</returns>
         public static ConnectionMultiplexer OpenConnection(bool isPersistence) {
-            //Verifica se a conexão existe
+            //Verify if exists
             if ((_connection != null) && (_connection.IsConnected)) return _connection;
 
-            //Sincronismo
+            //Sync context
             lock (SyncObj) {
                 try {
-                    //Verifica se a conexão existe
+                    //Verify if connection exists
                     if ((_connection == null) || (_connection.IsConnected)) {
-                        //Abre a conexão
+                        //Open connection
                         _connection = ConnectionMultiplexer.Connect(_connectionString);
-                        //Evento de falha
+                        //Fail event
                         _connection.ConnectionFailed += delegate (object sender, ConnectionFailedEventArgs args) {
-                            //Dispara o evento
+                            //Invoke event
                             OnFailedHandle(args);
-                            //Retenta a conexão
+                            //Retry connection
                             if (isPersistence) _connection = RetryOpenConnection();
                         };
-                        //Evento de conexão reestabelecida
+                        //Connection restored
                         _connection.ConnectionRestored += delegate (object sender, ConnectionFailedEventArgs args) {
-                            //Dispara o evento
+                            //Invoke event
                             OnRestoredHandle(args);
                         };
                     }
                 } catch (Exception ex) {
-                    //Dispara o erro
+                    //Invoke error
                     OnErrorHandle(ex);
-                    //Retenta a conexão
+                    //Retry connection
                     if (isPersistence) return RetryOpenConnection();
                 }
             }
 
-            //Retorno
+            //Return
             return _connection;
         }
 
         /// <summary>
-        /// Retenta a conexão
+        /// Retry connection
         /// </summary>
-        /// <param name="waitMilliseconds">tempo de aguardo até a próxima retentativa</param>
-        /// <returns>conexão</returns>
+        /// <param name="waitMilliseconds">waitting for retry</param>
+        /// <returns>connection</returns>
         private static ConnectionMultiplexer RetryOpenConnection(int waitMilliseconds = 1000) {
-            //Envia mensagem
+            //Send message
             OnInfoHandle($"Waitting {waitMilliseconds} ms for retry connection");
-            //Efetua pausa
+            //Wait
             Task.Run(() => {
-                //Pausa
+                //Sleep
                 Thread.Sleep(waitMilliseconds);
             }).Wait();
-            //Evia mensagem
+            //Send message
             OnInfoHandle("Retry connection");
-            //Abre a conexão
+            //Open connection
             return OpenConnection(true);
         }
 
         /// <summary>
-        /// Define a string de conexão
+        /// Define connection string
         /// </summary>
-        /// <param name="connectionString">string de conexão</param>
+        /// <param name="connectionString">connection string</param>
         public static void SetConnectionString(string connectionString) {
-            //Define conexão
+            //Define connection
             _connectionString = connectionString;
         }
 
         /// <summary>
-        /// Evento de falha
+        /// Fail event
         /// </summary>
-        /// <param name="obj">objeto</param>
+        /// <param name="obj">object</param>
         private static void OnFailedHandle(ConnectionFailedEventArgs obj) {
-            //Dispara evento
+            //Invoke event
             OnFailed?.Invoke(obj);
         }
 
         /// <summary>
-        /// Restaura dados
+        /// Restore event
         /// </summary>
-        /// <param name="obj">objeto</param>
+        /// <param name="obj">object</param>
         private static void OnRestoredHandle(ConnectionFailedEventArgs obj) {
-            //Dispara evento
+            //Invoke event
             OnRestored?.Invoke(obj);
         }
 
         /// <summary>
-        /// Evento de erro
+        /// Error event
         /// </summary>
-        /// <param name="ex">exceção</param>
+        /// <param name="ex">excception</param>
         private static void OnErrorHandle(Exception ex) {
-            //Dispara evento
+            //Invoke event
             OnError?.Invoke(ex);
         }
 
         /// <summary>
-        /// Evento de informação
+        /// Information event
         /// </summary>
-        /// <param name="message">mensagem</param>
+        /// <param name="message">message</param>
         private static void OnInfoHandle(string message) {
-            //Dispara evento
+            //Invoke event
             OnInfo?.Invoke(message);
         }
     }

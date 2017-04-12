@@ -4,53 +4,53 @@ using System;
 namespace RedisCacheEventClient.Utilities.Interfaces {
 
     /// <summary>
-    /// Utilitário de controle de eventos
+    /// Utility event manager
     /// </summary>
-    /// <typeparam name="T">tipo</typeparam>
+    /// <typeparam name="T">type</typeparam>
     internal interface IObserverManagerUtility<T> {
 
         /// <summary>
-        /// Evento
+        /// Receive event
         /// </summary>
         event Action<T, string> OnReceiveMessage;
 
         /// <summary>
-        /// Evento
+        /// Send message event
         /// </summary>
         event Action<T> OnSendMessage;
 
         /// <summary>
-        /// Evento de erro
+        /// Error event
         /// </summary>
         event Action<Exception> OnErrorMessage;
 
         /// <summary>
-        /// Evento de informação
+        /// Information event
         /// </summary>
         event Action<string> OnInfoMessage;
 
         /// <summary>
-        /// Evento de conexão
+        /// Connection event
         /// </summary>
         event Action<string, ConnectionFailedEventArgs> OnConnectionMessage;
 
         /// <summary>
-        /// Indica se está conectado
+        /// flag that indicate is connected
         /// </summary>
-        /// <returns></returns>
+        /// <returns>success flag</returns>
         bool IsConnected();
 
         /// <summary>
-        /// Assina a fila
+        /// Subscribe stream channel
         /// </summary>
-        /// <param name="channel">canal</param>
+        /// <param name="channel">stream channel</param>
         void Subscribe(string channel);
 
         /// <summary>
-        /// Publica mensagem
+        /// Publish message
         /// </summary>
-        /// <param name="channel">canal</param>
-        /// <param name="obj">objeto</param>
+        /// <param name="channel">stream channel</param>
+        /// <param name="obj">object</param>
         void Publish(string channel, T obj);
     }
 }

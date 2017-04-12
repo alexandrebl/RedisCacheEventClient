@@ -8,182 +8,183 @@ using System.Threading.Tasks;
 namespace RedisCacheEventClient.Utilities {
 
     /// <summary>
-    /// Utilitário de controle de eventos
+    /// Utility event manager
     /// </summary>
-    /// <typeparam name="T">tipo</typeparam>
+    /// <typeparam name="T">type</typeparam>
     internal class ObserverManagerUtility<T> : IObserverManagerUtility<T> {
 
         /// <summary>
-        /// Conexão
+        /// Connection
         /// </summary>
         private readonly ConnectionMultiplexer _connection;
 
         /// <summary>
-        /// Evento
+        /// Receive event
         /// </summary>
         public event Action<T, string> OnReceiveMessage;
 
         /// <summary>
-        /// Evento
+        /// Send message event
         /// </summary>
         public event Action<T> OnSendMessage;
 
         /// <summary>
-        /// Evento de erro
+        /// Error event
         /// </summary>
         public event Action<Exception> OnErrorMessage;
 
         /// <summary>
-        /// Evento de informação
+        /// Information event
         /// </summary>
         public event Action<string> OnInfoMessage;
 
         /// <summary>
-        /// Evento de conexão
+        /// Connection event
         /// </summary>
         public event Action<string, ConnectionFailedEventArgs> OnConnectionMessage;
 
         /// <summary>
-        /// Objeto de sincronismo
+        /// Sync object
         /// </summary>
         // ReSharper disable once StaticMemberInGenericType
         private static readonly object SyncObj = new object();
 
         /// <summary>
-        /// Método construtor
+        /// Constructor method
         /// </summary>
+        /// <param name="host">server conection string</param>
         public ObserverManagerUtility(string host) {
-            //Define conexão
+            //Define connection
             ObserverConnectionManager.SetConnectionString(host);
-            //Aber uma conexão
+            //Open connection
             _connection = ObserverConnectionManager.OpenConnection(true);
 
-            //Evento de falha
+            //Connection fail
             ObserverConnectionManager.OnFailed += delegate (ConnectionFailedEventArgs args) {
-                //Dispara o evento
+                //Invoke event
                 OnConnectionHandle("Connection error", args);
             };
 
-            //Evento de conexão restabelecida
+            //Connection Restored
             ObserverConnectionManager.OnRestored += delegate (ConnectionFailedEventArgs args) {
-                //Dispara o evento
+                //Invoke event
                 OnConnectionHandle("Connection restored", args);
             };
 
-            //Evento de erro
+            //Error event
             ObserverConnectionManager.OnError += delegate (Exception exception) {
-                //Dispara o evento
+                //Invoke event
                 OnErrorMessageHadle(new Exception($"Connection error. Exception: {exception}"));
             };
 
-            //Evento de informação
+            //Information event
             ObserverConnectionManager.OnInfo += OnInfoMessageHandle;
         }
 
         /// <summary>
-        /// Indica se está conectado
+        /// flag that indicate is connected
         /// </summary>
-        /// <returns></returns>
+        /// <returns>success flag</returns>
         public bool IsConnected() {
-            //Sincronismo
+            //Sync context
             lock (SyncObj) {
-                //Indica se está conectado
+                //Return flag data
                 return _connection?.IsConnected ?? false;
             }
         }
 
         /// <summary>
-        /// Assina a fila
+        /// Subscribe stream channel
         /// </summary>
-        /// <param name="channel">canal</param>
+        /// <param name="channel">stream channel</param>
         public void Subscribe(string channel) {
-            //Obtem uma assinatura no canal
+            //Get channel subscriber
             var subscriber = GetSubscriber();
 
             try {
-                //Assina o canal
+                //Subscribe channel
                 subscriber?.Subscribe(channel, (redisChannel, message) => {
-                    //Converte o tipo do objeto
+                    //Convert object
                     var obj = ObserverDataUtility<T>.RedisValueToObj(message);
-                    //diapara o evento
+                    //Invoke event
                     OnReceiveMessageHadle(obj, channel);
                 });
 
-                //Desfaz a assinatura do canal
+                //Unsubscribe channel
                 subscriber?.Unsubscribe(channel, (redisChannel, value) => {
-                    //Assina o canal
+                    //Subscribe channel
                     Subscribe(channel);
                 });
             } catch (Exception ex) {
-                //Dispara o evento
+                //Invoke event
                 OnErrorMessageHadle(ex);
-                //Aguarda 1 segundo
+                //Waitting for 1 second
                 Task.Run(() => { Thread.Sleep(1000); });
-                //Assina o canal
+                //Subscribe channel
                 Subscribe(channel);
             }
         }
 
         /// <summary>
-        /// Publica mensagem
+        /// Publish message
         /// </summary>
-        /// <param name="channel">canal</param>
-        /// <param name="obj">objeto</param>
+        /// <param name="channel">stream channel</param>
+        /// <param name="obj">object</param>
         public void Publish(string channel, T obj) {
-            //Indica se está conectado
+            //Flag
             if (!IsConnected()) {
-                //Dispara evento
+                //Invoke event
                 OnErrorMessageHadle(new Exception("Connection is not ready to publish"));
                 return;
             }
 
-            //Obtem um publicador
+            //Get subscriber
             var publisher = GetSubscriber();
-            //Mensagem
+            //Get message data
             var message = ObserverDataUtility<T>.ObjToRedisValue(obj);
 
-            //Publica
+            //Publish
             publisher?.Publish(channel, message);
-            //Dispara mensagem
+            //Invoke event
             OnSendMessageHadle(obj);
         }
 
         /// <summary>
-        /// Obtem um observador
+        /// Get subscriber
         /// </summary>
         /// <returns>observador</returns>
         private ISubscriber GetSubscriber() {
-            //Verifica se está conectado
+            //Verify if is connected
             if (!IsConnected()) {
-                //Dispara evento
+                //Invoke event
                 OnErrorMessageHadle(new Exception("Connection is not ready to subcribe"));
-                //Retorno
+                //Return
                 return null;
             }
 
-            //Obtem um observador
+            //Get subscriber
             var subscriber = _connection.GetSubscriber();
 
-            //Retorno
+            //Return
             return subscriber;
         }
 
         /// <summary>
-        /// Mensagem recebida
+        /// Receive messaage
         /// </summary>
-        /// <param name="obj">objeto</param>
-        /// <param name="channel">canal</param>
+        /// <param name="obj">object</param>
+        /// <param name="channel">channel</param>
         protected virtual void OnReceiveMessageHadle(T obj, string channel) {
-            //Dispara evento
+            //Invoke event
             OnReceiveMessage?.Invoke(obj, channel);
         }
 
         /// <summary>
-        /// Envio de mensagem
+        /// Send message
         /// </summary>
-        /// <param name="obj">objeto</param>
+        /// <param name="obj">object</param>
         protected virtual void OnSendMessageHadle(T obj) {
-            //Dispara evento
+            //Invoke event
             OnSendMessage?.Invoke(obj);
         }
 
@@ -192,26 +193,26 @@ namespace RedisCacheEventClient.Utilities {
         /// </summary>
         /// <param name="ex">erro</param>
         protected virtual void OnErrorMessageHadle(Exception ex) {
-            //Dispara evento
+            //Invoke event
             OnErrorMessage?.Invoke(ex);
         }
 
         /// <summary>
-        /// Mensagem de informação
+        /// Information message
         /// </summary>
         /// <param name="message">mensagem</param>
         protected virtual void OnInfoMessageHandle(string message) {
-            //Dispara evento
+            //Invoke event
             OnInfoMessage?.Invoke(message);
         }
 
         /// <summary>
-        /// Evento de conexão
+        /// Connection event
         /// </summary>
-        /// <param name="mensagem"></param>
-        /// <param name="eventArgs">argumentos do evento</param>
+        /// <param name="mensagem">message</param>
+        /// <param name="eventArgs">event arguments</param>
         protected virtual void OnConnectionHandle(string mensagem, ConnectionFailedEventArgs eventArgs) {
-            //Dispara evento
+            //Invoke event
             OnConnectionMessage?.Invoke(mensagem, eventArgs);
         }
     }
