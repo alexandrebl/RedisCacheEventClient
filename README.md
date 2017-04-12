@@ -2,6 +2,12 @@
 Redis cache event client manager
 
 ```cs
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace ConsoleExample {
+
     /// <summary>
     /// Main class
     /// </summary>
@@ -50,3 +56,4 @@ Redis cache event client manager
             Console.WriteLine($"Received: {obj}");
         }
     }
+}
