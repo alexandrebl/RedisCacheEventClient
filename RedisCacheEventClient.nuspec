@@ -23,6 +23,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\bin\Release\RedisCacheEventClient.*" target="lib\net45" />
+    <file src="bin\Release\RedisCacheEventClient.*" target="lib\net45" />
   </files>
 </package>
