@@ -1,0 +1,593 @@
+{
+  "version": 2,
+  "targets": {
+    ".NETFramework,Version=v4.5": {
+      "Newtonsoft.Json/10.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "StackExchange.Redis/1.2.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.IO.Compression"
+        ],
+        "compile": {
+          "lib/net45/StackExchange.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extender/1.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "StackExchange.Redis": "1.0.481"
+        },
+        "compile": {
+          "lib/StackExchange.Redis.Extender.dll": {}
+        },
+        "runtime": {
+          "lib/StackExchange.Redis.Extender.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extensions.Core/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "StackExchange.Redis": "1.2.0"
+        },
+        "compile": {
+          "lib/net45/StackExchange.Redis.Extensions.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.Extensions.Core.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extensions.Newtonsoft/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1",
+          "StackExchange.Redis.Extensions.Core": "2.1.0"
+        },
+        "compile": {
+          "lib/net45/StackExchange.Redis.Extensions.Newtonsoft.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.Extensions.Newtonsoft.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5.2": {
+      "Newtonsoft.Json/10.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "StackExchange.Redis/1.2.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.IO.Compression"
+        ],
+        "compile": {
+          "lib/net45/StackExchange.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extender/1.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "StackExchange.Redis": "1.0.481"
+        },
+        "compile": {
+          "lib/StackExchange.Redis.Extender.dll": {}
+        },
+        "runtime": {
+          "lib/StackExchange.Redis.Extender.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extensions.Core/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "StackExchange.Redis": "1.2.0"
+        },
+        "compile": {
+          "lib/net45/StackExchange.Redis.Extensions.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.Extensions.Core.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extensions.Newtonsoft/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1",
+          "StackExchange.Redis.Extensions.Core": "2.1.0"
+        },
+        "compile": {
+          "lib/net45/StackExchange.Redis.Extensions.Newtonsoft.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.Extensions.Newtonsoft.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6": {
+      "Newtonsoft.Json/10.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "StackExchange.Redis/1.2.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.IO.Compression"
+        ],
+        "compile": {
+          "lib/net46/StackExchange.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net46/StackExchange.Redis.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extender/1.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "StackExchange.Redis": "1.0.481"
+        },
+        "compile": {
+          "lib/StackExchange.Redis.Extender.dll": {}
+        },
+        "runtime": {
+          "lib/StackExchange.Redis.Extender.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extensions.Core/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "StackExchange.Redis": "1.2.0"
+        },
+        "compile": {
+          "lib/net45/StackExchange.Redis.Extensions.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.Extensions.Core.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extensions.Newtonsoft/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1",
+          "StackExchange.Redis.Extensions.Core": "2.1.0"
+        },
+        "compile": {
+          "lib/net45/StackExchange.Redis.Extensions.Newtonsoft.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.Extensions.Newtonsoft.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6.1": {
+      "Newtonsoft.Json/10.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "StackExchange.Redis/1.2.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.IO.Compression"
+        ],
+        "compile": {
+          "lib/net46/StackExchange.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net46/StackExchange.Redis.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extender/1.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "StackExchange.Redis": "1.0.481"
+        },
+        "compile": {
+          "lib/StackExchange.Redis.Extender.dll": {}
+        },
+        "runtime": {
+          "lib/StackExchange.Redis.Extender.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extensions.Core/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "StackExchange.Redis": "1.2.0"
+        },
+        "compile": {
+          "lib/net45/StackExchange.Redis.Extensions.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.Extensions.Core.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extensions.Newtonsoft/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1",
+          "StackExchange.Redis.Extensions.Core": "2.1.0"
+        },
+        "compile": {
+          "lib/net45/StackExchange.Redis.Extensions.Newtonsoft.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.Extensions.Newtonsoft.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6.2": {
+      "Newtonsoft.Json/10.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "StackExchange.Redis/1.2.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.IO.Compression"
+        ],
+        "compile": {
+          "lib/net46/StackExchange.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net46/StackExchange.Redis.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extender/1.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "StackExchange.Redis": "1.0.481"
+        },
+        "compile": {
+          "lib/StackExchange.Redis.Extender.dll": {}
+        },
+        "runtime": {
+          "lib/StackExchange.Redis.Extender.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extensions.Core/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "StackExchange.Redis": "1.2.0"
+        },
+        "compile": {
+          "lib/net45/StackExchange.Redis.Extensions.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.Extensions.Core.dll": {}
+        }
+      },
+      "StackExchange.Redis.Extensions.Newtonsoft/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1",
+          "StackExchange.Redis.Extensions.Core": "2.1.0"
+        },
+        "compile": {
+          "lib/net45/StackExchange.Redis.Extensions.Newtonsoft.dll": {}
+        },
+        "runtime": {
+          "lib/net45/StackExchange.Redis.Extensions.Newtonsoft.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Newtonsoft.Json/10.0.2": {
+      "sha512": "iwElSU2IXmwGvytJsezyDML2ZWDkG2JzTYzlU/BNlmzMdlmRvbnwITsGGY74gwVEpDli1UdOLkMT7/3jxWvXzA==",
+      "type": "package",
+      "path": "newtonsoft.json/10.0.2",
+      "files": [
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wpa81+wp8/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wpa81+wp8/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wpa81+wp8/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wpa81+wp8/Newtonsoft.Json.xml",
+        "newtonsoft.json.10.0.2.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "tools/install.ps1"
+      ]
+    },
+    "StackExchange.Redis/1.2.3": {
+      "sha512": "+YaB3ui5jOo+GEcdLBX5kL3YOB+rAJtZy7fqaIpd0K5ApLp08nmKzcFDtF/RF+/wS0Mw1IqowXYqUQVuY76Oag==",
+      "type": "package",
+      "path": "stackexchange.redis/1.2.3",
+      "files": [
+        "lib/net45/StackExchange.Redis.dll",
+        "lib/net45/StackExchange.Redis.xml",
+        "lib/net46/StackExchange.Redis.dll",
+        "lib/net46/StackExchange.Redis.xml",
+        "lib/netstandard1.5/StackExchange.Redis.dll",
+        "lib/netstandard1.5/StackExchange.Redis.xml",
+        "stackexchange.redis.1.2.3.nupkg.sha512",
+        "stackexchange.redis.nuspec"
+      ]
+    },
+    "StackExchange.Redis.Extender/1.0.5": {
+      "sha512": "ohqehh1qkiyDVskoE5ui6Ws1wkyuzy2Ur4k4cwnI5XAGODYDUB+D0oGZ3Wp6tkTmYF9GdBpvwkLVgI4qjfluEA==",
+      "type": "package",
+      "path": "stackexchange.redis.extender/1.0.5",
+      "files": [
+        "lib/StackExchange.Redis.Extender.dll",
+        "stackexchange.redis.extender.1.0.5.nupkg.sha512",
+        "stackexchange.redis.extender.nuspec"
+      ]
+    },
+    "StackExchange.Redis.Extensions.Core/2.1.0": {
+      "sha512": "K3gCw/i5jCOa0vQUDGhdH44p8+c867pg7/jDXM7lljeWUyaXonuXJGui4/tovuNIZuxKU9cSj9OvI0W7fxjh1w==",
+      "type": "package",
+      "path": "stackexchange.redis.extensions.core/2.1.0",
+      "files": [
+        "lib/net45/StackExchange.Redis.Extensions.Core.XML",
+        "lib/net45/StackExchange.Redis.Extensions.Core.dll",
+        "stackexchange.redis.extensions.core.2.1.0.nupkg.sha512",
+        "stackexchange.redis.extensions.core.nuspec"
+      ]
+    },
+    "StackExchange.Redis.Extensions.Newtonsoft/2.1.0": {
+      "sha512": "xs5jxb9lqlQGt7lKloziQdNLJkmXy221Lj/jhxUBkL7d8WWTQIPtF0sOT80TQAmw6UGrWbNVEk/6lL+2Ak7RLw==",
+      "type": "package",
+      "path": "stackexchange.redis.extensions.newtonsoft/2.1.0",
+      "files": [
+        "lib/net45/StackExchange.Redis.Extensions.Newtonsoft.XML",
+        "lib/net45/StackExchange.Redis.Extensions.Newtonsoft.dll",
+        "stackexchange.redis.extensions.newtonsoft.2.1.0.nupkg.sha512",
+        "stackexchange.redis.extensions.newtonsoft.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.5": [
+      "Newtonsoft.Json >= 10.0.2",
+      "StackExchange.Redis >= 1.2.3",
+      "StackExchange.Redis.Extender >= 1.0.5",
+      "StackExchange.Redis.Extensions.Core >= 2.1.0",
+      "StackExchange.Redis.Extensions.Newtonsoft >= 2.1.0"
+    ],
+    ".NETFramework,Version=v4.5.2": [
+      "Newtonsoft.Json >= 10.0.2",
+      "StackExchange.Redis >= 1.2.3",
+      "StackExchange.Redis.Extender >= 1.0.5",
+      "StackExchange.Redis.Extensions.Core >= 2.1.0",
+      "StackExchange.Redis.Extensions.Newtonsoft >= 2.1.0"
+    ],
+    ".NETFramework,Version=v4.6": [
+      "Newtonsoft.Json >= 10.0.2",
+      "StackExchange.Redis >= 1.2.3",
+      "StackExchange.Redis.Extender >= 1.0.5",
+      "StackExchange.Redis.Extensions.Core >= 2.1.0",
+      "StackExchange.Redis.Extensions.Newtonsoft >= 2.1.0"
+    ],
+    ".NETFramework,Version=v4.6.1": [
+      "Newtonsoft.Json >= 10.0.2",
+      "StackExchange.Redis >= 1.2.3",
+      "StackExchange.Redis.Extender >= 1.0.5",
+      "StackExchange.Redis.Extensions.Core >= 2.1.0",
+      "StackExchange.Redis.Extensions.Newtonsoft >= 2.1.0"
+    ],
+    ".NETFramework,Version=v4.6.2": [
+      "Newtonsoft.Json >= 10.0.2",
+      "StackExchange.Redis >= 1.2.3",
+      "StackExchange.Redis.Extender >= 1.0.5",
+      "StackExchange.Redis.Extensions.Core >= 2.1.0",
+      "StackExchange.Redis.Extensions.Newtonsoft >= 2.1.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Alexandre\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\repository\\git\\RedisCacheEventClient\\RedisCacheEventClient.csproj",
+      "projectName": "RedisCacheEventClient",
+      "projectPath": "C:\\repository\\git\\RedisCacheEventClient\\RedisCacheEventClient.csproj",
+      "outputPath": "C:\\repository\\git\\RedisCacheEventClient\\obj\\",
+      "projectStyle": "PackageReference",
+      "crossTargeting": true,
+      "originalTargetFrameworks": [
+        "net45",
+        "net452",
+        "net46",
+        "net461",
+        "net462"
+      ],
+      "frameworks": {
+        "net46": {
+          "projectReferences": {}
+        },
+        "net45": {
+          "projectReferences": {}
+        },
+        "net461": {
+          "projectReferences": {}
+        },
+        "net462": {
+          "projectReferences": {}
+        },
+        "net452": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net46": {
+        "dependencies": {
+          "StackExchange.Redis.Extensions.Newtonsoft": {
+            "target": "Package",
+            "version": "2.1.0"
+          },
+          "StackExchange.Redis.Extender": {
+            "target": "Package",
+            "version": "1.0.5"
+          },
+          "StackExchange.Redis": {
+            "target": "Package",
+            "version": "1.2.3"
+          },
+          "StackExchange.Redis.Extensions.Core": {
+            "target": "Package",
+            "version": "2.1.0"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "10.0.2"
+          }
+        }
+      },
+      "net45": {
+        "dependencies": {
+          "StackExchange.Redis.Extensions.Newtonsoft": {
+            "target": "Package",
+            "version": "2.1.0"
+          },
+          "StackExchange.Redis.Extender": {
+            "target": "Package",
+            "version": "1.0.5"
+          },
+          "StackExchange.Redis": {
+            "target": "Package",
+            "version": "1.2.3"
+          },
+          "StackExchange.Redis.Extensions.Core": {
+            "target": "Package",
+            "version": "2.1.0"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "10.0.2"
+          }
+        }
+      },
+      "net461": {
+        "dependencies": {
+          "StackExchange.Redis.Extensions.Newtonsoft": {
+            "target": "Package",
+            "version": "2.1.0"
+          },
+          "StackExchange.Redis.Extender": {
+            "target": "Package",
+            "version": "1.0.5"
+          },
+          "StackExchange.Redis": {
+            "target": "Package",
+            "version": "1.2.3"
+          },
+          "StackExchange.Redis.Extensions.Core": {
+            "target": "Package",
+            "version": "2.1.0"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "10.0.2"
+          }
+        }
+      },
+      "net462": {
+        "dependencies": {
+          "StackExchange.Redis.Extensions.Newtonsoft": {
+            "target": "Package",
+            "version": "2.1.0"
+          },
+          "StackExchange.Redis.Extender": {
+            "target": "Package",
+            "version": "1.0.5"
+          },
+          "StackExchange.Redis": {
+            "target": "Package",
+            "version": "1.2.3"
+          },
+          "StackExchange.Redis.Extensions.Core": {
+            "target": "Package",
+            "version": "2.1.0"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "10.0.2"
+          }
+        }
+      },
+      "net452": {
+        "dependencies": {
+          "StackExchange.Redis.Extensions.Newtonsoft": {
+            "target": "Package",
+            "version": "2.1.0"
+          },
+          "StackExchange.Redis.Extender": {
+            "target": "Package",
+            "version": "1.0.5"
+          },
+          "StackExchange.Redis": {
+            "target": "Package",
+            "version": "1.2.3"
+          },
+          "StackExchange.Redis.Extensions.Core": {
+            "target": "Package",
+            "version": "2.1.0"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "10.0.2"
+          }
+        }
+      }
+    }
+  }
+}

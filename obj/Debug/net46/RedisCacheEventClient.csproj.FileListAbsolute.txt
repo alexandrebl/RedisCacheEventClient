@@ -1,0 +1,11 @@
+C:\repository\git\RedisCacheEventClient\bin\Debug\net46\RedisCacheEventClient.dll
+C:\repository\git\RedisCacheEventClient\bin\Debug\net46\RedisCacheEventClient.pdb
+C:\repository\git\RedisCacheEventClient\bin\Debug\net46\Newtonsoft.Json.dll
+C:\repository\git\RedisCacheEventClient\bin\Debug\net46\StackExchange.Redis.dll
+C:\repository\git\RedisCacheEventClient\bin\Debug\net46\StackExchange.Redis.Extender.dll
+C:\repository\git\RedisCacheEventClient\bin\Debug\net46\StackExchange.Redis.Extensions.Core.dll
+C:\repository\git\RedisCacheEventClient\bin\Debug\net46\StackExchange.Redis.Extensions.Newtonsoft.dll
+C:\repository\git\RedisCacheEventClient\obj\Debug\net46\RedisCacheEventClient.csprojResolveAssemblyReference.cache
+C:\repository\git\RedisCacheEventClient\obj\Debug\net46\RedisCacheEventClient.AssemblyInfo.cs
+C:\repository\git\RedisCacheEventClient\obj\Debug\net46\RedisCacheEventClient.dll
+C:\repository\git\RedisCacheEventClient\obj\Debug\net46\RedisCacheEventClient.pdb
