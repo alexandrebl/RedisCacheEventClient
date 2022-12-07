@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="StackExchange.Redis" Version="1.2.3" />
     <PackageReference Include="StackExchange.Redis.Extender" Version="1.0.5" />
     <PackageReference Include="StackExchange.Redis.Extensions.Core" Version="2.1.0" />
